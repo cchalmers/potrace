@@ -3,7 +3,7 @@
 
 -----------------------------------------------------------------------------
 -- |
--- Module      :  Graphics.Potrace.Base
+-- Module      :  Graphics.Potrace
 -- Copyright   :  (c) 2015 Christopher Chalmers
 -- License     :  BSD-style (see LICENSE)
 -- Maintainer  :  c.chalmers@me.com
