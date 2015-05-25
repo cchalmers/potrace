@@ -15,13 +15,13 @@
 module Graphics.Potrace
   (
     -- * Tracing
-  , trace
+    trace
   , trace'
   , traceForest
   , traceForest'
 
     -- * Path type
-    Curve (..)
+  , Curve (..)
   , Segment (..)
   , P2 (..)
 
@@ -52,9 +52,9 @@ import Graphics.Potrace.Base
 -- Images
 ------------------------------------------------------------------------
 
--- | Generate a bitmap by apply the predicate function to each pixel.
---   'True' corresponds to a black pixel or \"on\". 'False' corresponds
---   to white or \"off\".
+-- | Generate a bitmap by apply the predicate function to each pixel of
+--   "JuicyPixels" image. 'True' corresponds to a black pixel, 'False'
+--   corresponds to white.
 fromImage :: Pixel a => Image a -> (a -> Bool) -> Bitmap
 fromImage img@(Image w h _) f =
   generate w h $ \i j ->
@@ -62,9 +62,9 @@ fromImage img@(Image w h _) f =
     f $ pixelAt img i (h - j - 1)
 
 -- | Generate a bitmap choosing pixels according to their luma plane for
---   a threshold given between 0 and 1.  Anything below the threshold is
---   white or \"off\". Anything above the threshold is black, or \"on\".
---   Throws an error for CMYK images.
+--   a threshold given between 0 and 1. Anything below the threshold is
+--   white. Anything above the threshold is black. Throws an error for
+--   CMYK images.
 lumaThreshold :: DynamicImage -> Double -> Bitmap
 lumaThreshold dimg t = case dimg of
   ImageY8 i     -> word8 i

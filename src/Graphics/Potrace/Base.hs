@@ -111,10 +111,10 @@ generate w h f = Bitmap w h (n+1) v
 --
 -- @
 -- Parameters
---   { turdSize     = 2
---   , turnPolicy   = MinorityTP
---   , alphaMax     = 1.0
---   , optTolerance = 0.2
+--   { 'turdSize'     = 2
+--   , 'turnPolicy'   = 'MinorityTP'
+--   , 'alphaMax'     = 1.0
+--   , 'optTolerance' = 'Just' 0.2
 --   }
 -- @
 data Parameters = Parameters
