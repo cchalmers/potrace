@@ -15,13 +15,15 @@
 module Graphics.Potrace
   (
     -- * Tracing
-    Curve (..)
-  , Segment (..)
-  , P2 (..)
   , trace
   , trace'
   , traceForest
   , traceForest'
+
+    -- * Path type
+    Curve (..)
+  , Segment (..)
+  , P2 (..)
 
     -- * Bitmaps
   , Bitmap
@@ -98,7 +100,7 @@ lumaThreshold dimg t = case dimg of
 -- Lenses --------------------------------------------------------------
 
 -- | A van Laarhoven lens, compatible with various lens libraries.
-type Lens' s a = Functor f => (a -> f a) -> s -> f s
+type Lens' s a = forall f. Functor f => (a -> f a) -> s -> f s
 
 (<&>) :: Functor f => f a -> (a -> b) -> f b
 (<&>) = flip fmap
@@ -124,6 +126,8 @@ turnPolicy f ps = f (_turnPolicy ps) <&> \p' -> ps { _turnPolicy = p' }
 --   corners).
 --
 --   Default is @1.0@.
+--
+-- <<diagrams/alphaMax.svg#diagram=alphaMaxExample&width=500>>
 alphaMax :: Lens' Parameters Double
 alphaMax f ps = f (_alphaMax ps) <&> \p' -> ps { _alphaMax = p' }
 

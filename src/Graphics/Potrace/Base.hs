@@ -118,10 +118,10 @@ generate w h f = Bitmap w h (n+1) v
 --   }
 -- @
 data Parameters = Parameters
-  { _turdSize     :: Int            -- ^ 'Graphics.Potrace.turdSize'
-  , _turnPolicy   :: TurnPolicy     -- ^ 'Graphics.Potrace.turnPolicy'
-  , _alphaMax     :: Double         -- ^ 'Graphics.Potrace.alphaMax'
-  , _optTolerance :: (Maybe Double) -- ^ 'Graphics.Potrace.optTolerance'
+  { _turdSize     :: Int            -- ^ See 'Graphics.Potrace.turdSize'.
+  , _turnPolicy   :: TurnPolicy     -- ^ See 'Graphics.Potrace.turnPolicy'.
+  , _alphaMax     :: Double         -- ^ See 'Graphics.Potrace.alphaMax'.
+  , _optTolerance :: (Maybe Double) -- ^ See 'Graphics.Potrace.optTolerance'.
   }
 
 instance Default Parameters where
