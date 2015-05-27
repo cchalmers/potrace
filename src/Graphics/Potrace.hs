@@ -29,6 +29,7 @@ module Graphics.Potrace
   , Bitmap
   , generate
   , fromImage
+  , toImage
   , lumaThreshold
 
   -- * Parameters
@@ -44,6 +45,7 @@ module Graphics.Potrace
   )
   where
 
+import Data.Bool
 import Codec.Picture.Types
 
 import Graphics.Potrace.Base
@@ -57,9 +59,14 @@ import Graphics.Potrace.Base
 --   corresponds to white.
 fromImage :: Pixel a => Image a -> (a -> Bool) -> Bitmap
 fromImage img@(Image w h _) f =
-  generate w h $ \i j ->
-    -- potrace starts at bottom left, juicy starts at top left
-    f $ pixelAt img i (h - j - 1)
+  generate w h $ \i j -> f $ pixelAt img i (h - j - 1)
+  -- potrace starts at bottom left, juicy starts at top left
+
+-- | Convert a 'Bitmap' to an 'image' by using the given pixels for
+--   'True' and 'False'. This is mainly here for debugging purposes.
+toImage :: Pixel a => Bitmap -> a -> a -> Image a
+toImage bm@(Bitmap w h _ _) on off = generateImage f w h
+  where f i j = bool off on $ index bm i (h - j - 1)
 
 -- | Generate a bitmap choosing pixels according to their luma plane for
 --   a threshold given between 0 and 1. Anything below the threshold is

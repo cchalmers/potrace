@@ -31,6 +31,7 @@ module Graphics.Potrace.Base
     -- * Bitmaps
   , Bitmap (..)
   , generate
+  , index
 
   -- * Parameters
   , Parameters (..)
@@ -102,6 +103,16 @@ generate w h f = Bitmap w h dy v
 
     in  go (c - 1) 0
 {-# INLINE generate #-}
+
+-- | Index a pixel in a 'Bitmap'. This is mainly here for debugging
+--   purposes.
+index :: Bitmap -> Int -> Int -> Bool
+index (Bitmap w h dy v) i j = testBit w (m - 1 - r)
+  where
+    m = sizeOf (0 :: CULong) * 8
+    w = v V.! (j * dy + (i `div` m))
+    (n,r) = i `divMod` m
+{-# INLINE index #-}
 
 ------------------------------------------------------------------------
 -- Parameters
