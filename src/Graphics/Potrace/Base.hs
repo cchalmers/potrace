@@ -70,7 +70,7 @@ data Bitmap = Bitmap
 -- | Given an image and a predicate for whether a pixel is on or off,
 --   create a bit-packed image suitable for passing to potrace.
 generate :: Int -> Int -> (Int -> Int -> Bool) -> Bitmap
-generate w h f = Bitmap w h (n+1) v
+generate w h f = Bitmap w h dy v
   where
   -- The format of the vector potrace needs depends on the size and
   -- endianness of the machine.
@@ -80,13 +80,14 @@ generate w h f = Bitmap w h (n+1) v
   -- (horizontal) line n words wide, the last word only uses r of its
   -- bits.
   (n,r) = w `divMod` m
+  dy = if r == 0 then n else n + 1
 
   -- Number of potential pixels (bits) in each x line (we only use w of them).
-  l = (n+1) * m
+  l = dy * m
 
-  -- Each x line is made up of n+1 words, so we need (n+1)*h words for
+  -- Each x line is made up of dy words, so we need dy*h words for
   -- the whole picture.
-  v = V.generate ((n+1)*h) $ \i ->
+  v = V.generate (dy*h) $ \i ->
     -- The starting point in the image for current block of pixels.
     let (y,x) = (i*m) `divMod` l
         -- Number of pixels we need to fill.
