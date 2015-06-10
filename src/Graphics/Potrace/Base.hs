@@ -221,8 +221,8 @@ trace' p bm = unsafePerformIO $ unsafeWithImage pathList p bm
 -- | Trace the bitmap image as a forest of curves using potrace with 'def'
 --   parameters. Each child curve is completely contained in it's
 --   parent.
-traceForest :: Bitmap -> [Curve]
-traceForest = trace' def
+traceForest :: Bitmap -> Forest Curve
+traceForest = traceForest' def
 
 -- | Trace the bitmap image as a forest of curves using potrace with
 --   given parameters parameters. Each child curve is completely
