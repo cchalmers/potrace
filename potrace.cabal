@@ -20,6 +20,10 @@ extra-source-files:  README.md, diagrams/*.svg
 extra-doc-files:     diagrams/*.svg
 cabal-version:       >=1.10
 
+source-repository head
+  type:     git
+  location: git://github.com/cchalmers/potrace.git
+
 library
   exposed-modules:
     Graphics.Potrace
