@@ -4,13 +4,14 @@ synopsis:            Trace bitmap images to paths using potrace
 description:
   Trace bitmap images to paths using the potrace library. Helpers for
   generating bitmap images from functions or JuicyPixel images.
-
-  See potrace-diagrams for an implimentation for the diagrams library.
+  .
+  See <https://github.com/diagrams/potrace-diagrams/ potrace-diagrams>
+  for an implimentation for the diagrams library.
 license:             GPL-2
 license-file:        LICENSE
 author:              Christopher Chalmers
 maintainer:          c.chalmers@me.com
--- copyright:           
+copyright:           Copyright (C) 2015 Christopher Chalmers
 category:            Graphics
 build-type:          Simple
 extra-source-files:  README.md, diagrams/*.svg
@@ -22,7 +23,7 @@ library
     Graphics.Potrace
     Graphics.Potrace.Base
   build-depends:
-    base >=4.7 && <5,
+    base >=4.6 && <5,
     bindings-potrace >=0.1 && <0.2,
     vector,
     JuicyPixels,

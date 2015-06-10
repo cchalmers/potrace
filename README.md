@@ -26,5 +26,5 @@ you can add the `--extra-lib-dirs=/usr/local/lib
 [potrace]: http://potrace.sourceforge.net
 [JuicyPixel]: https://github.com/Twinside/Juicy.Pixels
 [bindings-potrace]: https://github.com/rwbarton/bindings-potrace
-[potrace-diagrams]: https://github.com/cchalmers/potrace-diagrams
+[potrace-diagrams]: https://github.com/diagrams/potrace-diagrams
 [homebrew]: http://brew.sh
