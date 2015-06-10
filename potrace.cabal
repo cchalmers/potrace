@@ -11,7 +11,9 @@ license:             GPL-2
 license-file:        LICENSE
 author:              Christopher Chalmers
 maintainer:          c.chalmers@me.com
-copyright:           Copyright (C) 2015 Christopher Chalmers
+homepage:            http://github.com/cchalmers/potrace
+bug-reports:         http://github.com/cchalmers/potrace/issues
+copyright:           (c) 2015. Christopher Chalmers <c.chalmers@me.com>
 category:            Graphics
 build-type:          Simple
 extra-source-files:  README.md, diagrams/*.svg
